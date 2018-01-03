@@ -15,7 +15,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void startGame();
+
 private:
+    void MainWindow::connectSignalsToSlots();
+
     Ui::MainWindow *ui;
 };
 
