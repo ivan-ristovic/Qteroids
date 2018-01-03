@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QScopedPointer>
+#include "include/game.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -20,8 +23,10 @@ private slots:
 
 private:
     void MainWindow::connectSignalsToSlots();
+    void MainWindow::initializeGameWindow();
 
-    Ui::MainWindow *ui;
+    Ui::MainWindow *_ui;
+    QScopedPointer<Game> _game;
 };
 
 #endif // MAINWINDOW_H

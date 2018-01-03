@@ -3,27 +3,37 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    _ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
-    this->setFixedSize(width(), height());
-    this->connectSignalsToSlots();
+    _ui->setupUi(this);
+    setFixedSize(width(), height());
+    connectSignalsToSlots();
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+    delete _ui;
 }
 
 
 void MainWindow::connectSignalsToSlots()
 {
-    connect(ui->pbStartGame, SIGNAL(clicked(bool)), this, SLOT(startGame()));
-    connect(ui->pbExitGame, SIGNAL(clicked(bool)), this, SLOT(close()));
+    connect(_ui->pbStartGame, SIGNAL(clicked(bool)), this, SLOT(startGame()));
+    connect(_ui->pbExitGame, SIGNAL(clicked(bool)), this, SLOT(close()));
 }
 
-#include <QDebug>
+void MainWindow::initializeGameWindow()
+{
+    _ui->gvScene->setScene(&(*_game));
+    _ui->gvScene->raise();
+    _ui->gvScene->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    _ui->gvScene->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+}
+
 void MainWindow::startGame()
 {
-    qDebug() << "started";
+    _ui->frMainMenu->hide();
+    _ui->gvScene->setFocus();
+    _game.reset(new Game(_ui->gvScene));
+    initializeGameWindow();
 }
