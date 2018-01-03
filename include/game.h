@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QGraphicsView>
 #include <QScopedPointer>
+#include "include/player.h"
 
 /**
  * @brief The Asteroids Game class.
@@ -20,8 +21,9 @@ public:
     Game& operator=(const Game&) = delete;
 
 private:
-    QGraphicsView *_parent;     //!< Parent view representing the current scene (this).
-    QScopedPointer<QGraphicsPixmapItem> _bg;    //!< Background.
+    QGraphicsView *_parent;                     //!< Parent view representing the current scene (this).
+    QScopedPointer<QGraphicsPixmapItem> _bg;    //!< Background image pointer.
+    QScopedPointer<Player> _player;             //!< Player pointer.
 };
 
 #endif // GAME_H

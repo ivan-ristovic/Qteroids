@@ -1,10 +1,11 @@
 #include "include/entity.h"
 #include <QGraphicsObject>
+#include <QPainter>
 #include <QPainterPath>
 #include <QRectF>
 
 
-Entity::Entity(qreal x, qreal y, qreal w, qreal h, qreal angle = 0) :
+Entity::Entity(qreal x, qreal y, qreal w, qreal h, qreal angle) :
     _w(w),
     _h(h),
     _angle(angle)
@@ -26,17 +27,7 @@ QPainterPath Entity::shape() const
 
 void Entity::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
-    painter->drawRect(0, 0, _w, _h);
-}
-
-void Entity::hide()
-{
-    QGraphicsObject::hide();
-}
-
-void Entity::show()
-{
-    QGraphicsObject::show();
+    painter->fillRect(0, 0, _w, _h, Qt::white);
 }
 
 qreal Entity::h() const

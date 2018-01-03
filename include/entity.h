@@ -2,11 +2,12 @@
 #define ENTITY_H
 
 #include <QObject>
+#include <QGraphicsObject>
 
 /**
  * @brief Provides a drawing base for all objects.
  */
-class Entity : public QGraphicsItem
+class Entity : public QGraphicsObject
 {
     Q_OBJECT
 
@@ -21,8 +22,6 @@ public:
     Entity(qreal x, qreal y, qreal w, qreal h, qreal angle = 0);
 
     // Overrides from QGraphicsObject
-    virtual void hide();
-    virtual void show();
     virtual QRectF boundingRect() const override;
     virtual QPainterPath shape() const override;
     virtual void paint(QPainter *painter,

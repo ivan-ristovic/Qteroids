@@ -1,7 +1,7 @@
 #include "include/player.h"
 
 Player::Player(qreal x, qreal y) :
-    Entity::Entity(x, y, 40, 40),
+    Entity::Entity(x - 20, y - 20, 40, 40),
     _v(0)
 {
 
@@ -15,10 +15,10 @@ void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
 qreal Player::centerX() const
 {
-    return x() + _w/2;
+    return x() + 20;
 }
 
 qreal Player::centerY() const
 {
-    return y() + _h/2;
+    return y() + 20;
 }

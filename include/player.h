@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 #include <QObject>
-
+#include <QScopedPointer>
 #include "include/entity.h"
 
 
@@ -25,9 +25,8 @@ public:
     virtual qreal centerX() const override;
     virtual qreal centerY() const override;
 
-
 private:
-    qreal _v;
+    qreal _v;                           //!< Player speed
 };
 
 #endif // PLAYER_H
