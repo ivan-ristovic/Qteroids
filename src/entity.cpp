@@ -1,8 +1,13 @@
 #include "include/entity.h"
+#include <QGraphicsObject>
+#include <QPainterPath>
+#include <QRectF>
 
-Entity::Entity(qreal x, qreal y, qreal w, qreal h) :
+
+Entity::Entity(qreal x, qreal y, qreal w, qreal h, qreal angle = 0) :
     _w(w),
-    _h(h)
+    _h(h),
+    _angle(angle)
 {
     setPos(x, y);
 }
@@ -42,6 +47,11 @@ qreal Entity::h() const
 qreal Entity::w() const
 {
     return _w;
+}
+
+qreal Entity::angle() const
+{
+    return _angle;
 }
 
 qreal Entity::centerX() const

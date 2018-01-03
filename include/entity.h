@@ -18,7 +18,7 @@ public:
      * @param w             Width
      * @param h             Height
      */
-    Entity(qreal x, qreal y, qreal w, qreal h);
+    Entity(qreal x, qreal y, qreal w, qreal h, qreal angle = 0);
 
     // Overrides from QGraphicsObject
     virtual void hide();
@@ -42,6 +42,12 @@ public:
     qreal w() const;
 
     /**
+     * @brief   Get entity rotation angle
+     * @return  Entity rotation angle
+     */
+    qreal angle() const;
+
+    /**
      * @brief   Get X coordinate of the center in parent coordinate system
      * @return  X coordinate of the center
      */
@@ -57,6 +63,7 @@ public:
 protected:
     qreal _w;           //!< Width
     qreal _h;           //!< Height
+    qreal _angle;       //!< Rotation angle
 };
 
 #endif // ENTITY_H

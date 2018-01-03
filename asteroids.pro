@@ -27,12 +27,14 @@ SOURCES += \
     src/main.cpp \
     src/mainwindow.cpp \
     src/game.cpp \
-    src/entity.cpp
+    src/entity.cpp \
+    src/player.cpp
 
 HEADERS += \
     include/mainwindow.h \
     include/game.h \
-    include/entity.h
+    include/entity.h \
+    include/player.h
 
 FORMS += \
     ui/mainwindow.ui
