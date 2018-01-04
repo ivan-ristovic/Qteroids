@@ -5,12 +5,16 @@
 #include <QRectF>
 
 
-Entity::Entity(qreal x, qreal y, qreal w, qreal h, qreal angle) :
+Entity::Entity(qreal x, qreal y, qreal w, qreal h, qreal angle, qreal vx, qreal vy) :
     _w(w),
     _h(h),
-    _angle(angle)
+    _angle(angle),
+    _vx(vx),
+    _vy(vy)
 {
     setPos(x, y);
+    setTransformOriginPoint(_w/2, _h/2);
+    setRotation(angle);
 }
 
 Entity::Entity(const Entity &e) :
@@ -60,17 +64,8 @@ qreal Entity::angle() const
     return _angle;
 }
 
-qreal Entity::centerX() const
-{
-    return x();
-}
-
-qreal Entity::centerY() const
-{
-    return y();
-}
-
 void Entity::move()
 {
-
+    setX(x() + _vx);
+    setY(y() + _vy);
 }

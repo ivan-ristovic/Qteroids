@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <QObject>
+#include <QBrush>
 #include <QGraphicsView>
 #include <QScopedPointer>
 #include <QTimer>

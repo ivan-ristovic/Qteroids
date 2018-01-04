@@ -22,9 +22,6 @@ public:
     virtual void paint(QPainter *painter,
                        const QStyleOptionGraphicsItem *option,
                        QWidget *widget) override;
-    virtual qreal centerX() const override;
-    virtual qreal centerY() const override;
-    void move() override;
 
     /**
      * @brief   Accelerates the player in the direction he is facing

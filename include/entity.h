@@ -19,7 +19,7 @@ public:
      * @param w             Width
      * @param h             Height
      */
-    Entity(qreal x, qreal y, qreal w, qreal h, qreal angle = 0);
+    Entity(qreal x, qreal y, qreal w, qreal h, qreal angle = -90, qreal vx = 0, qreal vy = 0);
 
     Entity(const Entity&);
     Entity& operator=(const Entity&);
@@ -50,27 +50,17 @@ public:
     qreal angle() const;
 
     /**
-     * @brief   Get X coordinate of the center in parent coordinate system
-     * @return  X coordinate of the center
-     */
-    virtual qreal centerX() const;
-
-    /**
-     * @brief   Get Y coordinate of the center in parent coordinate system
-     * @return  Y coordinate of the center
-     */
-    virtual qreal centerY() const;
-
-    /**
      * @brief   Entity move function
      */
-    virtual void move();
+    void move();
 
 
 protected:
     qreal _w;           //!< Width
     qreal _h;           //!< Height
     qreal _angle;       //!< Rotation angle
+    qreal _vx;          //!< X-Axis speed
+    qreal _vy;          //!< Y-Axis speed
 };
 
 #endif // ENTITY_H
