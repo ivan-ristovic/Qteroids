@@ -13,6 +13,21 @@ Entity::Entity(qreal x, qreal y, qreal w, qreal h, qreal angle) :
     setPos(x, y);
 }
 
+Entity::Entity(const Entity &e) :
+    _w(e.w()),
+    _h(e.h()),
+    _angle(e.angle())
+{
+    setPos(e.x(), e.y());
+}
+
+Entity &Entity::operator=(const Entity &e)
+{
+    Entity temp(e);
+    std::swap(*this, temp);
+    return *this;
+}
+
 QRectF Entity::boundingRect() const
 {
     return QRectF(0, 0, _w, _h);
@@ -53,4 +68,9 @@ qreal Entity::centerX() const
 qreal Entity::centerY() const
 {
     return y();
+}
+
+void Entity::move()
+{
+
 }

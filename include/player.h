@@ -24,6 +24,7 @@ public:
                        QWidget *widget) override;
     virtual qreal centerX() const override;
     virtual qreal centerY() const override;
+    void move() override;
 
 private:
     qreal _v;                           //!< Player speed

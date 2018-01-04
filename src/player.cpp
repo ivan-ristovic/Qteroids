@@ -22,3 +22,8 @@ qreal Player::centerY() const
 {
     return y() + 20;
 }
+
+void Player::move()
+{
+
+}

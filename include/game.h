@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QGraphicsView>
 #include <QScopedPointer>
+#include <QTimer>
+#include <QVector>
 #include "include/player.h"
 
 /**
@@ -20,10 +22,14 @@ public:
     Game(const Game&) = delete;
     Game& operator=(const Game&) = delete;
 
+private slots:
+    void tick();
+
 private:
-    QGraphicsView *_parent;                     //!< Parent view representing the current scene (this).
-    QScopedPointer<QGraphicsPixmapItem> _bg;    //!< Background image pointer.
-    QScopedPointer<Player> _player;             //!< Player pointer.
+    QGraphicsView *_parent;                     //!< Parent view representing the current scene (this)
+    QScopedPointer<QGraphicsPixmapItem> _bg;    //!< Background image pointer
+    QScopedPointer<Player> _player;             //!< Player pointer
+    QScopedPointer<QTimer> _gameTicker;         //!< Game ticker
 };
 
 #endif // GAME_H

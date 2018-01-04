@@ -21,6 +21,9 @@ public:
      */
     Entity(qreal x, qreal y, qreal w, qreal h, qreal angle = 0);
 
+    Entity(const Entity&);
+    Entity& operator=(const Entity&);
+
     // Overrides from QGraphicsObject
     virtual QRectF boundingRect() const override;
     virtual QPainterPath shape() const override;
@@ -57,6 +60,11 @@ public:
      * @return  Y coordinate of the center
      */
     virtual qreal centerY() const;
+
+    /**
+     * @brief   Entity move function
+     */
+    virtual void move();
 
 
 protected:
