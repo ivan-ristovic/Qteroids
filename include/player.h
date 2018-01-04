@@ -26,6 +26,16 @@ public:
     virtual qreal centerY() const override;
     void move() override;
 
+    /**
+     * @brief   Accelerates the player in the direction he is facing
+     */
+    void accelerate();
+
+    /**
+     * @brief   Slows the player down
+     */
+    void decelerate();
+
 private:
     qreal _v;                           //!< Player speed
 };

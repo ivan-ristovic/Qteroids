@@ -22,6 +22,9 @@ public:
     Game(const Game&) = delete;
     Game& operator=(const Game&) = delete;
 
+    // Event overrides
+    void keyPressEvent(QKeyEvent *event) override;
+
 private slots:
     void tick();
 

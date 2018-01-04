@@ -27,3 +27,14 @@ void Player::move()
 {
 
 }
+
+#include <QDebug>
+void Player::accelerate()
+{
+    qDebug() << "accelerating";
+}
+
+void Player::decelerate()
+{
+    qDebug() << "decelerating";
+}
