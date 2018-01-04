@@ -33,6 +33,12 @@ public:
      */
     void decelerate();
 
+    /**
+     * @brief       Change player rotation angle by offset
+     * @param a     Offset angle (clockwise)
+     */
+    void changeAngleBy(qreal a);
+
 private:
     qreal _v;                           //!< Player speed
 };

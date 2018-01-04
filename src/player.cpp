@@ -29,3 +29,12 @@ void Player::decelerate()
     if (_vy < 1)
         _vy = 0;
 }
+
+void Player::changeAngleBy(qreal a)
+{
+    _angle += a;
+    if (_angle > 360)
+        _angle -= 360;
+    else if (_angle < -360)
+        _angle += 360;
+}

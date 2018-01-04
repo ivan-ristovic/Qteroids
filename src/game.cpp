@@ -25,9 +25,9 @@ Game::Game(QGraphicsView *parentGraphicsView) :
 void Game::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Left || event->key() == Qt::Key_A)
-        ; // TODO
+        _player->changeAngleBy(-5);
     else if (event->key() == Qt::Key_Right || event->key() == Qt::Key_D)
-        ; // TODO
+        _player->changeAngleBy(5);
     else if (event->key() == Qt::Key_Up || event->key() == Qt::Key_W)
         _player->accelerate();
     else if (event->key() == Qt::Key_Down || event->key() == Qt::Key_S)
