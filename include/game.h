@@ -25,6 +25,7 @@ public:
 
     // Event overrides
     void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
 
 private slots:
     void tick();

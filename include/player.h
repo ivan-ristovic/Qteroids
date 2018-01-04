@@ -11,36 +11,20 @@ class Player : public Entity
     Q_OBJECT
 
 public:
-    /**
-     * @brief       Player constructor
-     * @param x     X position of the player in the scene
-     * @param y     Y position of the player in the scene
-     */
     Player(qreal x = 0, qreal y = 0);
 
     // Overrides from Entity
     virtual void paint(QPainter *painter,
                        const QStyleOptionGraphicsItem *option,
                        QWidget *widget) override;
+    virtual void move() override;
 
-    /**
-     * @brief   Accelerates the player in the direction he is facing
-     */
     void accelerate();
-
-    /**
-     * @brief   Slows the player down
-     */
     void decelerate();
-
-    /**
-     * @brief       Change player rotation angle by offset
-     * @param a     Offset angle (clockwise)
-     */
-    void changeAngleBy(qreal a);
+    void setAngleModifier(const qreal &angleModifier);
 
 private:
-    qreal _v;                           //!< Player speed
+    qreal _angleModifier;       //!< How much the angle changes per tick
 };
 
 #endif // PLAYER_H
