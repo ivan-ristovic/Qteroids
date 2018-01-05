@@ -7,6 +7,8 @@
 Game::Game(QGraphicsView *parentGraphicsView) :
     _parent(parentGraphicsView)
 {
+    setSceneRect(0, 0, _parent->width(), _parent->height());
+
     // Add background image to the scene
     _bg.reset(new QGraphicsPixmapItem(QPixmap::fromImage(QImage("F:/Work/GitHub/asteroids/res/background.png"))));
     addItem(&(*_bg));

@@ -1,4 +1,5 @@
 #include "include/player.h"
+#include <QGraphicsScene>
 #include <QtMath>
 
 Player::Player(qreal x, qreal y) :
@@ -14,7 +15,7 @@ void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     setRotation(_angle);
     Entity::paint(painter, option, widget);
 }
-
+#include <QDebug>
 void Player::move()
 {
     _angle += _angleModifier;
@@ -31,12 +32,15 @@ void Player::move()
         _vy *= 0.99;
     }
 
-    if (std::abs(_vx) < 0.001)
+    if (std::abs(_vx) < 0.01)
         _vx = 0;
-    if (std::abs(_vy) < 0.001)
+    if (std::abs(_vy) < 0.01)
         _vy = 0;
 
     Entity::move();
+
+    if (x() + _w < 0) setX(scene()->width());  if (x() > scene()->width())  setX(0);
+    if (y() + _h < 0) setY(scene()->height()); if (y() > scene()->height()) setY(0);
 }
 
 void Player::setAngleModifier(const qreal &angleModifier)
