@@ -29,14 +29,16 @@ SOURCES += \
     src/game.cpp \
     src/entity.cpp \
     src/player.cpp \
-    src/bullet.cpp
+    src/bullet.cpp \
+    src/asteroid.cpp
 
 HEADERS += \
     include/mainwindow.h \
     include/game.h \
     include/entity.h \
     include/player.h \
-    include/bullet.h
+    include/bullet.h \
+    include/asteroid.h
 
 FORMS += \
     ui/mainwindow.ui

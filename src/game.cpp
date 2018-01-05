@@ -55,10 +55,34 @@ void Game::tick()
     _player->move();
     foreach (auto bullet, _bullets)
         bullet->move();
+    foreach (auto asteroid, _asteroids)
+        asteroid->move();
+
+    if (_asteroids.length() < 10) {
+        Asteroid *a;
+        qreal x = qrand() % (int)width();
+        qreal y = qrand() % (int)height();
+        qreal speed_x = qrand() % Asteroid::MAX_ASTEROID_SPEED + 1;
+        qreal speed_y = qrand() % Asteroid::MAX_ASTEROID_SPEED + 1;
+        qreal anglemod = qrand() % 10;
+        if (qrand() % 2 == 0)
+            a = new Asteroid(0, y, speed_x, speed_y, anglemod);
+        else
+            a = new Asteroid(x, 0, speed_x, speed_y, anglemod);
+        _asteroids.push_back(a);
+        connect(a, SIGNAL(outOfBounds(Asteroid*)), this, SLOT(deleteAsteroid(Asteroid*)));
+        addItem(a);
+    }
 }
 
 void Game::deleteBullet(Bullet *b)
 {
     _bullets.removeAll(b);
     delete b;
+}
+
+void Game::deleteAsteroid(Asteroid *a)
+{
+    _asteroids.removeAll(a);
+    delete a;
 }

@@ -10,10 +10,10 @@ Player::Player(qreal x, qreal y) :
 
 }
 
-void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     setRotation(_angle);
-    Entity::paint(painter, option, widget);
+    painter->fillRect(0, 0, _w, _h, QBrush(QPixmap("F:/Work/GitHub/asteroids/res/spaceship_cut.png")));
 }
 
 void Player::move()

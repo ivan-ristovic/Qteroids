@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QVector>
 #include "include/player.h"
+#include "include/asteroid.h"
 #include "include/bullet.h"
 
 
@@ -29,6 +30,7 @@ public:
 private slots:
     void tick();
     void deleteBullet(Bullet*);
+    void deleteAsteroid(Asteroid*);
 
 private:
     QGraphicsView *_parent;                     //!< Parent view representing the current scene (this)
@@ -36,6 +38,7 @@ private:
     QScopedPointer<Player> _player;             //!< Player pointer
     QScopedPointer<QTimer> _gameTicker;         //!< Game ticker
     QVector<Bullet *> _bullets;                 //!< Holds the bullets currently on the scene
+    QVector<Asteroid *> _asteroids;             //!< Holds the asteroids currently on the scene
 };
 
 #endif // GAME_H
