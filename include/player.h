@@ -19,12 +19,12 @@ public:
                        QWidget *widget) override;
     virtual void move() override;
 
-    void accelerate();
-    void decelerate();
     void setAngleModifier(const qreal &angleModifier);
+    void setThrust(bool thrust);
 
 private:
     qreal _angleModifier;       //!< How much the angle changes per tick
+    bool _thrust;               //!< Determines whether the thrust is applied
 };
 
 #endif // PLAYER_H

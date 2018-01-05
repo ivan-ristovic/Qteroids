@@ -3,7 +3,8 @@
 
 Player::Player(qreal x, qreal y) :
     Entity::Entity(x - 20, y - 20, 40, 40),
-    _angleModifier(0)
+    _angleModifier(0),
+    _thrust(false)
 {
 
 }
@@ -16,32 +17,34 @@ void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
 void Player::move()
 {
-    Entity::move();
     _angle += _angleModifier;
     if (_angle > 360)
         _angle -= 360;
     else if (_angle < -360)
         _angle += 360;
-}
 
-void Player::accelerate()
-{
-    _vx = 5 * cos(_angle * M_PI / 180);
-    _vy = 5 * sin(_angle * M_PI / 180);
-    _angleModifier = 0;
-}
+    if (_thrust) {
+        _vx = 5 * cos(_angle * M_PI / 180);
+        _vy = 5 * sin(_angle * M_PI / 180);
+    } else {
+        _vx *= 0.99;
+        _vy *= 0.99;
+    }
 
-void Player::decelerate()
-{
-    _vx /= 2;
-    _vy /= 2;
-    if (_vx < 1)
+    if (std::abs(_vx) < 0.001)
         _vx = 0;
-    if (_vy < 1)
+    if (std::abs(_vy) < 0.001)
         _vy = 0;
+
+    Entity::move();
 }
 
 void Player::setAngleModifier(const qreal &angleModifier)
 {
     _angleModifier = angleModifier;
+}
+
+void Player::setThrust(bool thrust)
+{
+    _thrust = thrust;
 }
