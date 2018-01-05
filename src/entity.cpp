@@ -59,6 +59,16 @@ qreal Entity::w() const
     return _w;
 }
 
+qreal Entity::centerX() const
+{
+    return x() + _w/2;
+}
+
+qreal Entity::centerY() const
+{
+    return y() + _h/2;
+}
+
 qreal Entity::angle() const
 {
     return _angle;

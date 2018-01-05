@@ -3,7 +3,7 @@
 #include <QtMath>
 
 Player::Player(qreal x, qreal y) :
-    Entity::Entity(x - 20, y - 20, 40, 40),
+    Entity::Entity(x - PLAYER_SIZE/2, y - PLAYER_SIZE/2, PLAYER_SIZE, PLAYER_SIZE),
     _angleModifier(0),
     _thrust(false)
 {
@@ -15,7 +15,7 @@ void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     setRotation(_angle);
     Entity::paint(painter, option, widget);
 }
-#include <QDebug>
+
 void Player::move()
 {
     _angle += _angleModifier;

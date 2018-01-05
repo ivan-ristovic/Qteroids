@@ -2,11 +2,11 @@
 #define ENTITY_H
 
 #include <QObject>
+#include <QPainter>
+#include <QPainterPath>
 #include <QGraphicsObject>
 
-/**
- * @brief Provides a drawing base for all objects.
- */
+
 class Entity : public QGraphicsObject
 {
     Q_OBJECT
@@ -25,6 +25,8 @@ public:
 
     qreal h() const;
     qreal w() const;
+    qreal centerX() const;
+    qreal centerY() const;
     qreal angle() const;
     virtual void move();
 

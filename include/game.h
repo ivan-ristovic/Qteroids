@@ -8,10 +8,9 @@
 #include <QTimer>
 #include <QVector>
 #include "include/player.h"
+#include "include/bullet.h"
 
-/**
- * @brief The Asteroids Game class.
- */
+
 class Game : public QGraphicsScene
 {
     Q_OBJECT
@@ -29,12 +28,14 @@ public:
 
 private slots:
     void tick();
+    void deleteBullet(Bullet*);
 
 private:
     QGraphicsView *_parent;                     //!< Parent view representing the current scene (this)
     QScopedPointer<QGraphicsPixmapItem> _bg;    //!< Background image pointer
     QScopedPointer<Player> _player;             //!< Player pointer
     QScopedPointer<QTimer> _gameTicker;         //!< Game ticker
+    QVector<Bullet *> _bullets;                 //!< Holds the bullets currently on the scene
 };
 
 #endif // GAME_H

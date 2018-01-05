@@ -34,6 +34,12 @@ void Game::keyPressEvent(QKeyEvent *event)
         _player->setThrust(true);
     else if (event->key() == Qt::Key_Down || event->key() == Qt::Key_S)
         _player->setThrust(false);
+    else if (event->key() == Qt::Key_Space) {
+        Bullet *b = new Bullet(_player->centerX(), _player->centerY(), _player->angle());
+        _bullets.push_back(b);
+        addItem(b);
+        connect(b, SIGNAL(outOfBounds(Bullet*)), this, SLOT(deleteBullet(Bullet*)));
+    }
 }
 
 void Game::keyReleaseEvent(QKeyEvent *event)
@@ -47,4 +53,12 @@ void Game::keyReleaseEvent(QKeyEvent *event)
 void Game::tick()
 {
     _player->move();
+    foreach (auto bullet, _bullets)
+        bullet->move();
+}
+
+void Game::deleteBullet(Bullet *b)
+{
+    _bullets.removeAll(b);
+    delete b;
 }

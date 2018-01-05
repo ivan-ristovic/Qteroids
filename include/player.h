@@ -11,6 +11,8 @@ class Player : public Entity
     Q_OBJECT
 
 public:
+    const static int PLAYER_SIZE = 40;
+
     Player(qreal x = 0, qreal y = 0);
 
     // Overrides from Entity
