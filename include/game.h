@@ -7,6 +7,7 @@
 #include <QScopedPointer>
 #include <QTimer>
 #include <QVector>
+#include "include/entity.h"
 #include "include/player.h"
 #include "include/asteroid.h"
 #include "include/bullet.h"
@@ -22,10 +23,16 @@ public:
     // Deleted functions
     Game(const Game&) = delete;
     Game& operator=(const Game&) = delete;
+    ~Game();
 
     // Event overrides
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
+
+    void stop();
+
+signals:
+    void gameOver();
 
 private slots:
     void tick();
@@ -33,6 +40,7 @@ private slots:
     void deleteAsteroid(Asteroid*);
 
 private:
+    bool _gameOver;
     QGraphicsView *_parent;                     //!< Parent view representing the current scene (this)
     QScopedPointer<QGraphicsPixmapItem> _bg;    //!< Background image pointer
     QScopedPointer<Player> _player;             //!< Player pointer

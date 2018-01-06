@@ -1,11 +1,13 @@
 #include "include/game.h"
 #include "include/player.h"
+#include "include/asteroid.h"
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 
 
 Game::Game(QGraphicsView *parentGraphicsView) :
-    _parent(parentGraphicsView)
+    _parent(parentGraphicsView),
+    _gameOver(false)
 {
     setSceneRect(0, 0, _parent->width(), _parent->height());
 
@@ -24,8 +26,19 @@ Game::Game(QGraphicsView *parentGraphicsView) :
     _gameTicker->start();
 }
 
+Game::~Game()
+{
+    foreach (auto b, _bullets)
+        delete b;
+    foreach (auto a, _asteroids)
+        delete a;
+}
+
 void Game::keyPressEvent(QKeyEvent *event)
 {
+    if (_gameOver)
+        return;
+
     if (event->key() == Qt::Key_Left || event->key() == Qt::Key_A)
         _player->setAngleModifier(-5);
     else if (event->key() == Qt::Key_Right || event->key() == Qt::Key_D)
@@ -44,6 +57,9 @@ void Game::keyPressEvent(QKeyEvent *event)
 
 void Game::keyReleaseEvent(QKeyEvent *event)
 {
+    if (_gameOver)
+        return;
+
     if (event->key() == Qt::Key_Left || event->key() == Qt::Key_A || event->key() == Qt::Key_Right || event->key() == Qt::Key_D)
         _player->setAngleModifier(0);
     else if (event->key() == Qt::Key_Up || event->key() == Qt::Key_W)
@@ -52,11 +68,19 @@ void Game::keyReleaseEvent(QKeyEvent *event)
 
 void Game::tick()
 {
+    if (_gameOver)
+        return;
+
     _player->move();
     foreach (auto bullet, _bullets)
         bullet->move();
-    foreach (auto asteroid, _asteroids)
+    foreach (auto asteroid, _asteroids) {
+        if (asteroid->collidesWithItem(&(*_player))) {
+            _gameOver = true;
+            emit gameOver();
+        }
         asteroid->move();
+    }
 
     if (_asteroids.length() < 10) {
         Asteroid *a;
@@ -84,5 +108,6 @@ void Game::deleteBullet(Bullet *b)
 void Game::deleteAsteroid(Asteroid *a)
 {
     _asteroids.removeAll(a);
+    disconnect(a, SIGNAL(outOfBounds(Asteroid*)), this, SLOT(deleteAsteroid(Asteroid*)));
     delete a;
 }

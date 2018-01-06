@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include "include/entity.h"
+#include "player.h"
+
 
 class Asteroid : public Entity
 {

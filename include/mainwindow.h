@@ -20,6 +20,7 @@ public:
 
 private slots:
     void startGame();
+    void stopGame();
 
 private:
     void MainWindow::connectSignalsToSlots();

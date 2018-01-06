@@ -36,4 +36,12 @@ void MainWindow::startGame()
     _ui->gvScene->setFocus();
     _game.reset(new Game(_ui->gvScene));
     initializeGameWindow();
+    connect(&(*_game), SIGNAL(gameOver()), this, SLOT(stopGame()));
+}
+
+void MainWindow::stopGame()
+{
+    _ui->frMainMenu->show();
+    _ui->frMainMenu->raise();
+    _ui->frMainMenu->setFocus();
 }
