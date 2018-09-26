@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -23,8 +23,8 @@ private slots:
     void stopGame();
 
 private:
-    void MainWindow::connectSignalsToSlots();
-    void MainWindow::initializeGameWindow();
+    void connectSignalsToSlots();
+    void initializeGameWindow();
 
     Ui::MainWindow *_ui;
     QScopedPointer<Game> _game;

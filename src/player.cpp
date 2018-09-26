@@ -39,8 +39,14 @@ void Player::move()
 
     Entity::move();
 
-    if (x() + _w < 0) setX(scene()->width());  if (x() > scene()->width())  setX(0);
-    if (y() + _h < 0) setY(scene()->height()); if (y() > scene()->height()) setY(0);
+    if (x() + _w < 0)
+        setX(scene()->width());
+    if (x() > scene()->width())
+        setX(0);
+    if (y() + _h < 0)
+        setY(scene()->height());
+    if (y() > scene()->height())
+        setY(0);
 }
 
 void Player::setAngleModifier(const qreal &angleModifier)

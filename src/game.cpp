@@ -6,8 +6,8 @@
 
 
 Game::Game(QGraphicsView *parentGraphicsView) :
-    _parent(parentGraphicsView),
-    _gameOver(false)
+    _gameOver(false),
+    _parent(parentGraphicsView)
 {
     setSceneRect(0, 0, _parent->width(), _parent->height());
 
