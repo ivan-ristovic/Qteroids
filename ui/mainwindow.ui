@@ -40,7 +40,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">
-background-image: url(F:/Work/GitHub/asteroids/res/background.png); </string>
+background-image: url(:/res/background.png); </string>
     </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarAlwaysOff</enum>

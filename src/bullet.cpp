@@ -13,7 +13,7 @@ Bullet::Bullet(qreal centerX, qreal centerY, qreal angle) :
 void Bullet::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     setRotation(_angle);
-    painter->fillRect(0, 0, _w, _h, QBrush(QPixmap("F:/Work/GitHub/asteroids/res/fire_blue.png")));
+    painter->fillRect(0, 0, _w, _h, QBrush(QPixmap(":/res/fire_blue.png")));
 }
 
 void Bullet::move()

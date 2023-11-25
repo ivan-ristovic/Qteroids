@@ -12,7 +12,7 @@ Game::Game(QGraphicsView *parentGraphicsView) :
     setSceneRect(0, 0, _parent->width(), _parent->height());
 
     // Add background image to the scene
-    _bg.reset(new QGraphicsPixmapItem(QPixmap::fromImage(QImage("F:/Work/GitHub/asteroids/res/background.png"))));
+    _bg.reset(new QGraphicsPixmapItem(QPixmap::fromImage(QImage(":/res/background.png"))));
     addItem(&(*_bg));
 
     // Create a new player
@@ -72,14 +72,28 @@ void Game::tick()
         return;
 
     _player->move();
-    foreach (auto bullet, _bullets)
+    foreach (auto bullet, _bullets) {
         bullet->move();
+    }
     foreach (auto asteroid, _asteroids) {
         if (asteroid->collidesWithItem(&(*_player))) {
             _gameOver = true;
             emit gameOver();
+            break;
         }
-        asteroid->move();
+
+        bool destroyed = false;
+        foreach (auto bullet, _bullets) {
+            if (asteroid->collidesWithItem(&(*bullet))) {
+                deleteBullet(bullet);
+                deleteAsteroid(asteroid);
+                destroyed = true;
+                break;
+            }
+        }
+
+        if (!destroyed)
+            asteroid->move();
     }
 
     if (_asteroids.length() < 10) {

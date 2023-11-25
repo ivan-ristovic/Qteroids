@@ -12,7 +12,7 @@ Asteroid::Asteroid(qreal x, qreal y, qreal vx, qreal vy, qreal anglemod) :
 void Asteroid::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     setRotation(_angle);
-    painter->fillRect(0, 0, _w, _h, QBrush(QPixmap("F:/Work/GitHub/asteroids/res/rock_cut.png")));
+    painter->fillRect(0, 0, _w, _h, QBrush(QPixmap(":/res/rock_cut.png")));
 }
 
 void Asteroid::move()

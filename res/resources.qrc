@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>background.png</file>
+        <file>fire_blue.png</file>
+        <file>fire_red.png</file>
+        <file>rock_cut.png</file>
+        <file>rock_small.png</file>
+        <file>rock.png</file>
+        <file>spaceship_cut.png</file>
+        <file>spaceship.png</file>
+    </qresource>
+    <qresource prefix="/res/explosions">
+        <file>explosions/type_A.gif</file>
+        <file>explosions/type_A.png</file>
+        <file>explosions/type_B.gif</file>
+        <file>explosions/type_B.png</file>
+        <file>explosions/type_C.gif</file>
+        <file>explosions/type_C.png</file>
+    </qresource>
+</RCC>
